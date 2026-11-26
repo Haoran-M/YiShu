@@ -6,7 +6,7 @@ This English-first website includes Plum Blossom readings, three-coin readings, 
 
 Edit English content in the repository root's `tools/english-gua.txt` and `tools/english-ui.txt`, then run `node tools/build-english.mjs`. English is the default; Chinese interfaces remain in Settings. The original English explanations and the attributed Chinese corpus are available under CC BY-SA 4.0.
 
-Visit collection is disabled. Public pages contain no tracking links or controls, and the dashboard files are excluded from the deployment. Previously collected counts remain protected by the publisher key at the report API; no new visits are stored.
+Visit collection is disabled. Public pages contain no tracking links or controls, and the dashboard files are excluded from the deployment. No public statistics endpoint remains, and no new visits are stored.
 
 ## Development
 

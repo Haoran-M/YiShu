@@ -1,7 +1,6 @@
 import {test} from 'node:test';
 import {strict as assert} from 'node:assert';
 import {readFile} from 'node:fs/promises';
-import {DatabaseSync} from 'node:sqlite';
 import worker from '../dist/server/index.js';
 import {english,englishText} from '../dist/english.js';
 import {conversion} from '../dist/engine.js';
@@ -28,10 +27,6 @@ test('all 64 gua have complete English interpretations aligned to the Chinese co
   }
 });
 
-function database(){
-  const db=new DatabaseSync(':memory:');
-  return {raw:db,prepare(sql){let params=[];return {bind(...values){params=values;return this;},sql,values:()=>params};},async batch(statements){return statements.map(({sql,values})=>({results:db.prepare(sql).all(...values())}));}};
-}
 const origin='https://example.org';
 test('visit collection is disabled and dashboard assets are not public',async()=>{
   const DB={prepare(){throw new Error('Collection must not access storage');},batch(){throw new Error('Collection must not access storage');}};
@@ -44,16 +39,7 @@ test('visit collection is disabled and dashboard assets are not public',async()=
   assert.equal(privacy.includes('id="toggle"'),false);
 });
 
-test('historical counts still require the private publisher key',async()=>{
-  const DB=database();DB.raw.exec(await readFile(new URL('../drizzle/0000_visit_counts.sql',import.meta.url),'utf8'));
-  const day=new Date().toISOString().slice(0,10);
-  DB.raw.prepare('INSERT INTO visit_pages(day,page,views) VALUES(?,?,?)').run(day,'library',3);
-  DB.raw.prepare('INSERT INTO visit_sessions(day,session_id,first_seen) VALUES(?,?,?)').run(day,'private-session',new Date().toISOString());
-  const env={DB,YISHU_ANALYTICS_KEY:'publisher-test-key'};
-  assert.equal((await worker.fetch(new Request(origin+'/api/analytics'),env)).status,401);
-  const response=await worker.fetch(new Request(origin+'/api/analytics',{headers:{Authorization:'Bearer publisher-test-key'}}),env);
-  assert.equal(response.status,200);
-  const counts=await response.json();assert.equal(counts.views,3);assert.equal(counts.sessions,1);
-  assert.equal(JSON.stringify(counts).includes('private-session'),false);
-  DB.raw.close();
+test('retired statistics endpoints stay unavailable even with the former key',async()=>{
+  const env={YISHU_ANALYTICS_KEY:'publisher-test-key',DB:{prepare(){throw new Error('No report database access');}}};
+  for(const headers of [{},{Authorization:'Bearer publisher-test-key'}]) assert.equal((await worker.fetch(new Request(origin+'/api/analytics',{headers}),env)).status,404);
 });

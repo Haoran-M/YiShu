@@ -59,41 +59,12 @@ async function exchangeSharedCode(code, env) {
   return token ? {codeGrant, token} : {error:"unavailable", status:503};
 }
 
-async function traffic(request,env,url) {
-  if (url.pathname==="/api/analytics") {
-    if(request.method!=="GET") return sendJson({error:"method"},405,{Allow:"GET"});
-    const supplied=request.headers.get("Authorization") ?? "";
-    const expected=env.YISHU_ANALYTICS_KEY ? "Bearer "+env.YISHU_ANALYTICS_KEY : "";
-    // Hash both values before comparing; the publisher key is never embedded in site assets.
-    const [a,b]=await Promise.all([supplied,expected].map(value=>crypto.subtle.digest("SHA-256",encoder.encode(value))));
-    let mismatch=0; const right=new Uint8Array(b);
-    new Uint8Array(a).forEach((value,index)=>{mismatch|=value^right[index];});
-    if(!expected||mismatch) return sendJson({error:"unauthorized"},401);
-    if(!env.DB) return sendJson({error:"unavailable"},503);
-    const since=new Date(Date.now()-29*86400000).toISOString().slice(0,10);
-    const today=new Date().toISOString().slice(0,10);
-    const results=await env.DB.batch([
-      env.DB.prepare("SELECT day, SUM(views) AS views FROM visit_pages WHERE day >= ? GROUP BY day ORDER BY day DESC").bind(since),
-      env.DB.prepare("SELECT day, COUNT(*) AS sessions FROM visit_sessions WHERE day >= ? GROUP BY day").bind(since),
-      env.DB.prepare("SELECT page, SUM(views) AS views FROM visit_pages WHERE day >= ? GROUP BY page ORDER BY views DESC").bind(since),
-    ]);
-    const sessions=new Map(results[1].results.map(row=>[row.day,row.sessions]));
-    const days=results[0].results.map(row=>({...row,sessions:sessions.get(row.day)??0}));
-    return sendJson({views:days.reduce((n,row)=>n+row.views,0),sessions:[...sessions.values()].reduce((a,b)=>a+b,0),today:sessions.get(today)??0,days,pages:results[2].results});
-  }
-  if(request.method!=="POST") return sendJson({error:"method"},405,{Allow:"POST"});
-  // Discard legacy visit requests without reading input or writing to storage.
-  return new Response(null,{status:204,headers:{"Cache-Control":"no-store"}});
-}
-
 export default {
   async fetch(request, env = {}) {
     const url=new URL(request.url);
     let path=url.pathname;
-    if(path==="/analytics.html"||path==="/analytics.js") return sendJson({error:"not_found"},404);
-    if(path==="/api/visits"||path==="/api/analytics") {
-      try{return await traffic(request,env,url);}catch{return sendJson({error:"unavailable"},503);}
-    }
+    if(path==="/analytics.html"||path==="/analytics.js"||path==="/api/analytics") return sendJson({error:"not_found"},404);
+    if(path==="/api/visits") return new Response(null,{status:204,headers:{"Cache-Control":"no-store"}});
     if (path==="/vip/unlock" || path==="/vip/lock" || path==="/vip/redeem") {
       const redeem = path === "/vip/redeem";
       const origin = request.headers.get("Origin");
