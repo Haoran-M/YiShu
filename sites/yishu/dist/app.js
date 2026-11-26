@@ -104,7 +104,7 @@ function render() {
   applyAppearance();
   $("#breadcrumb").innerHTML = `<span>${tx("易学工具")}</span><span class="slash" aria-hidden="true">/</span><span>${tx(pages[state.page][0])}</span>`;
   $("#navigation").innerHTML = ["plum","coins","hours","library","vip","history","settings"].map(navItem).join("");
-  $("#sidebar-footer").innerHTML = `<a href="downloads.html">${tx("下载应用和源码")}</a><span class="muted">${tx("卦例仅保存在此设备")}</span><a href="privacy.html">${settings.script==="english"?"Privacy":tx("隐私")}</a>`;
+  $("#sidebar-footer").innerHTML = `<a href="downloads.html">${tx("下载应用和源码")}</a><span class="muted">${tx("卦例仅保存在此设备")}</span>`;
   if (!corpus) return;
   vipGeneration++;
   vipTick = null;
