@@ -1,7 +1,7 @@
 import {branches, calculatePlum, castCoins, categories, civilTime, coinLabels, coinResult,
   conversion, hourInterval, nextHour, resolveReading, strokeDictionary, traditionalHour, trigrams} from "./engine.js";
 import {verifyAccessCode} from "./vip-access.js";
-import {english,englishText} from "./english.js?v=1.3.1";
+import {english,englishText} from "./english.js?v=1.3.2";
 import {trackPage} from "./tracking.js";
 
 const $ = selector => document.querySelector(selector);
@@ -12,7 +12,7 @@ const vipKey = "yishu:vip:1";
 const nativeApp = Boolean(window.chrome?.webview) || location.hostname === "appassets.androidplatform.net";
 const redeemEndpoint = "https://yishu-workbench.shortbrine32.chatgpt.site/vip/redeem";
 const pages = {
-  plum: ["梅花易数", "用数字、汉字或一句诗起卦。", "☵"],
+  plum: ["梅花易数", "用数字、英文或汉字起卦。", "☵"],
   coins: ["六爻摇卦", "每次投三枚铜钱，从初爻向上记录六次。", "◎"],
   hours: ["十二时辰", "查看当地时辰、下一时辰和黄黑道十二神。", "◷"],
   library: ["六十四卦", "按文王卦序阅读《周易》，也可按上下卦查找。", "▤"],
@@ -33,7 +33,7 @@ function loadStorage(key, fallback) {
 }
 let settings = {...defaults, ...loadStorage(keys.settings, {})};
 // Existing users receive the new English edition once, while retaining all readings.
-if (!settings.languageVersion) { settings.script="english"; settings.languageVersion=2; try { localStorage.setItem(keys.settings,JSON.stringify(settings)); } catch {} }
+if ((settings.languageVersion ?? 0)<3) { settings.script="english"; settings.languageVersion=3; try { localStorage.setItem(keys.settings,JSON.stringify(settings)); } catch {} }
 let history = loadStorage(keys.history, []);
 if (!Array.isArray(history)) history = [];
 history = history.filter(record => record && typeof record.id === "string" && Number.isInteger(record.original) && Number.isInteger(record.changed));
@@ -163,8 +163,8 @@ function plumChoices(trace) {
 function viewPlum() {
   const form = state.plum;
   const trace = state.trace;
-  const input = `<label>${tx(form.dual ? "上卦输入" : "数字、汉字或混合文字")}
-    <textarea data-field="plum.input" placeholder="${tx("例如 1234 或 春风又绿")}">${html(form.input)}</textarea></label>`;
+  const input = `<label>${tx(form.dual ? "上卦输入" : "数字、英文或汉字")}
+    <textarea data-field="plum.input" placeholder="${tx("例如 1234、hello 或 春风又绿")}">${html(form.input)}</textarea></label>`;
   const lower = form.dual ? `<label>${tx("下卦输入")}<textarea data-field="plum.lower">${html(form.lower)}</textarea></label>` : "";
   return `<div class="grid"><section class="card" id="plum-form">
     <header class="card-heading"><h2>${tx("起卦输入")}</h2>${button("试用示例","example","quiet")}</header>
@@ -173,6 +173,7 @@ function viewPlum() {
       <button type="button" aria-pressed="${form.dual}" data-action="dual">${tx("上下卦分开")}</button>
     </div>
     <div class="fields ${form.dual ? "split" : ""}">${input}${lower}</div>
+    <p class="panel-note">${tx("英文字母使用 A 至 Z 的字母表位置，分别计为 1 至 26，不区分大小写。每个字母单独计入，可与数字、汉字混合使用。")}</p>
     <div class="rule-row"><span>${tx(settings.stroke === "kangxi" ? "康熙笔画" : "现代笔画")}</span><span>${tx(settings.digits === "integer" ? "整段整数" : "逐位求和")}</span><a href="#settings">${tx("调整规则")}</a></div>
     ${questionForm("plum")}<div class="actions">${button("开始起卦","cast-plum","primary")}</div>
     <div class="feedback" role="status">${trace?.issues.length ? `<ul>${trace.issues.map(issue=>`<li>${tx(issue)}</li>`).join("")}</ul>` : ""}</div>
@@ -205,7 +206,7 @@ function makeResult(kind, bits, moving, calculation) {
     "，下卦" + trigrams[entry.lower][0] + "象征" + trigrams[entry.lower][5] + "。";
   return {id:uniqueId(), createdAt:Date.now(), method:kind === "plum" ? "PLUM" : "COINS",
     original:original.number, changed:changed.number, movingLines:moving, category, question:form.question,
-    algorithmVersion:"1.0.0", calculation, sources:[...new Set([original.source,changed.source])],
+    algorithmVersion:"1.1.0", calculation, sources:[...new Set([original.source,changed.source])],
     interpretation:{summary:themes(original), change:moving.length ? themes(changed) : "六爻皆静，可从本卦的卦辞与卦象思考目前的处境。",
       prompt:categories[category][1]}};
 }

@@ -15,7 +15,7 @@ const english=rows.map((row,index)=>{
     ...(index===0?{extra:'When all six lines change, the image of dragons without a single dominating head suggests shared strength without overbearing leadership.'}:{}),
     ...(index===1?{extra:'When all six lines change, remain faithful to an enduring, receptive commitment.'}:{})};
 });
-const ui=Object.fromEntries((await read('tools/english-ui.txt')).trimEnd().split(/\r?\n/).map(row=>{
+const ui=Object.fromEntries((await read('tools/english-ui.txt')).trimEnd().split(/\r?\n/).filter(row=>row.trim()).map(row=>{
   const i=row.indexOf('='); if(i<1) throw new Error('Invalid UI entry: '+row);return [row.slice(0,i),row.slice(i+1)];
 }));
 const classical={};

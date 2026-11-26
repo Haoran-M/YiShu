@@ -42,7 +42,7 @@ import org.yishu.domain.Trigram
 
 private const val MODERN_SOURCE = "Unihan 17.0.0 · kTotalStrokes"
 private const val KANGXI_SOURCE = "kangxi-strokecount · Unicode 11.0"
-internal const val ALGORITHM_VERSION = "1.0.0"
+internal const val ALGORITHM_VERSION = "1.1.0"
 
 internal class Corpus(private val assets: AssetManager) {
     private val english = JSONObject(assets.open("english.json").bufferedReader().use { it.readText() })
@@ -154,6 +154,7 @@ internal class Settings(context: Context) {
     private val shake = booleanPreferencesKey("shake")
     private val hourRule = stringPreferencesKey("hourRule")
     private val english = booleanPreferencesKey("english")
+    private val englishDefaultApplied = booleanPreferencesKey("englishDefaultAppliedV3")
 
     val values = store.data.catch { if (it is IOException) emit(emptyPreferences()) else throw it }.map(::read)
 
@@ -163,7 +164,7 @@ internal class Settings(context: Context) {
         data[zone].orEmpty(), data[traditional] ?: false,
         enumOr(data[appearance], Appearance.SYSTEM), data[shake] ?: false,
         enumOr(data[hourRule], HourRule.TWELVE_DEITIES),
-        data[english] ?: true,
+        if (data[englishDefaultApplied] == true) data[english] ?: true else true,
     )
 
     suspend fun update(transform: (Preferences) -> Preferences) {
@@ -179,6 +180,7 @@ internal class Settings(context: Context) {
             data[shake] = updated.shake
             data[hourRule] = updated.hourRule.name
             data[english] = updated.english
+            data[englishDefaultApplied] = true
         }
     }
 }

@@ -9,16 +9,16 @@ An English-first I Ching companion for the web, Android, and Windows, with all 6
 YiShu has a public browser edition and a portable Windows x64 app. All three editions include VIP access to the calendar and solar terms, birth lookup, derived hexagrams, and name and relationship readings. Version 1.3 adds English descriptions, line-by-line paraphrases, English and pinyin search, app downloads, and a private website visit dashboard. The installed apps need a connection for the first passphrase activation and then run offline until the saved pass expires. The desktop ZIP includes its site files and opens in a native window using the installed Microsoft Edge WebView2 Runtime.
 
 - Website source, calendar data decisions, and publisher code issuance are in [the website README](sites/yishu/README.md).
-- Build the Windows ZIP from the root with `./desktop/build.ps1`. Extract the entire `dist/YiShu-1.3.1-Windows-x64.zip` folder and open `YiShu.exe`.
+- Build the Windows ZIP from the root with `./desktop/build.ps1`. Extract the entire `dist/YiShu-1.3.2-Windows-x64.zip` folder and open `YiShu.exe`.
 - The Android launcher shows **VIP** in the top bar. This uses the same bundled VIP tools as the desktop version.
 
 ## Install
 
-1. Open `dist/YiShu-1.3.1-release.apk` on an Android 8.0 or newer device. Android may ask you to allow installation from the app used to open the APK.
+1. Open `dist/YiShu-1.3.2-release.apk` on an Android 8.0 or newer device. Android may ask you to allow installation from the app used to open the APK.
 2. Open **YiShu**. In **Plum Blossom Reading**, enter `1234` and tap **Cast reading**. The result is **The Traveler → Stillness**, with line 4 moving.
 3. Use **64 Hexagrams** in the top bar to browse the bundled text by name, number, or trigram combination.
 
-The release APK uses the same local QA signing certificate as 1.0.0. The debug APK has the package ID `org.yishu.app.debug` so it can coexist with the release APK. Android requires the same signing certificate for updates to a package already installed. See `dist/SHA256SUMS-1.3.1.txt` and [the original Android test report](docs/TEST_REPORT.md).
+The release APK uses the same local QA signing certificate as 1.0.0. The debug APK has the package ID `org.yishu.app.debug` so it can coexist with the release APK. Android requires the same signing certificate for updates to a package already installed. See `dist/SHA256SUMS-1.3.2.txt` and [the original Android test report](docs/TEST_REPORT.md).
 
 ## Build
 

@@ -25,6 +25,29 @@ class DivinationTest {
     }
     private val plum = PlumCalculator(dictionary)
 
+    @Test fun `English letters use alphabet positions and preserve existing input modes`() {
+        val word = plum.trace("hello", null, PlumRules())
+        assertTrue(word.issues.isEmpty())
+        assertEquals(listOf(8, 5, 12, 12, 15), (word.upper + word.lower).map { it.value!!.toInt() })
+        assertEquals(BigInteger.valueOf(25), word.upperSum)
+        assertEquals(BigInteger.valueOf(27), word.lowerSum)
+        val result = checkNotNull(word.reading(fixture))
+        assertEquals(61, result.original.bits)
+        assertEquals(53, result.changed.bits)
+        assertEquals(listOf(4), result.moving)
+        val uppercase = plum.trace("HELLO", null, PlumRules())
+        assertEquals(word.upperSum, uppercase.upperSum)
+        assertEquals(word.lowerSum, uppercase.lowerSum)
+        val alphabet = plum.trace("abcdefghijklmnopqrstuvwxyz", null, PlumRules())
+        assertEquals((1..26).toList(), (alphabet.upper + alphabet.lower).map { it.value!!.toInt() })
+        val mixed = plum.trace("A1龙z", null, PlumRules())
+        assertEquals(listOf(1, 1, 5, 26), (mixed.upper + mixed.lower).map { it.value!!.toInt() })
+        val grouped = plum.trace("A12z", null, PlumRules(digits = DigitMode.INTEGER))
+        assertEquals(listOf(1, 12, 26), (grouped.upper + grouped.lower).map { it.value!!.toInt() })
+        assertEquals(setOf(InputIssue.SINGLE_SHORT), plum.trace("A", null, PlumRules()).issues)
+        assertTrue(plum.trace("A", "Z", PlumRules()).issues.isEmpty())
+    }
+
     @Test fun `custom remainder mapping and bottom up lines are stable`() {
         assertEquals("坤乾兑离震巽坎艮", (0..7).joinToString("") { Trigram.fromRemainder(it).nameZh })
         assertEquals(listOf(0, 7, 3, 5, 1, 6, 2, 4), (0..7).map { Trigram.fromRemainder(it).bits })

@@ -107,7 +107,10 @@ export function calculatePlum({input, lowerInput = null, settings, dictionary, o
         continue;
       }
       flush();
-      if (/\p{Script=Han}/u.test(character)) {
+      if (/[A-Za-z]/.test(character)) {
+        const normalized=character.toUpperCase();
+        tokens.push({raw:character,normalized,value:BigInt(normalized.charCodeAt(0)-64),choices:[]});
+      } else if (/\p{Script=Han}/u.test(character)) {
         const choices = dictionary(character, settings.stroke);
         const exact = choices.filter(choice => choice.glyph === character);
         const picked = overrides.get(character) ?? (exact.length === 1 ? exact[0] : choices.length === 1 ? choices[0] : null);

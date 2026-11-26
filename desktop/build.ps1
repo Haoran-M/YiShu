@@ -62,7 +62,7 @@ $compilerArgs = @('/nologo','/target:winexe','/platform:x64','/optimize+','/utf8
 & $compiler @compilerArgs
 if ($LASTEXITCODE -ne 0) { throw 'Desktop compilation failed.' }
 
-$zip = Join-Path $deliverables 'YiShu-1.3.1-Windows-x64.zip'
+$zip = Join-Path $deliverables 'YiShu-1.3.2-Windows-x64.zip'
 Compress-Archive -LiteralPath $stage -DestinationPath $zip -Force
 Write-Output "Windows package: $zip"
 Get-FileHash -LiteralPath $zip

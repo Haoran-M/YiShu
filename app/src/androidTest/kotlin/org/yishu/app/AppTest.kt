@@ -28,22 +28,22 @@ class AppTest {
 
     @Test fun languageSwitchSupportsChineseAndPersistsAcrossRecreation() {
         waitFor("Create a reading")
-        rule.onNodeWithText("EN ▾").performClick()
+        rule.onNodeWithText("English ▾").performClick()
         rule.onNodeWithText("简体中文").performClick()
         waitFor("起卦输入")
         rule.activityRule.scenario.recreate()
         waitFor("起卦输入")
-        rule.onNodeWithText("简 ▾").performClick()
+        rule.onNodeWithText("简体中文 ▾").performClick()
         rule.onNodeWithText("繁體中文").performClick()
         waitFor("起卦輸入")
-        rule.onNodeWithText("繁 ▾").performClick()
+        rule.onNodeWithText("繁體中文 ▾").performClick()
         rule.onNodeWithText("English").performClick()
         waitFor("Create a reading")
     }
 
     @Test fun numericalReadingCanBeSavedReopenedAndDeleted() {
         waitFor("Create a reading")
-        rule.onNodeWithText("Numbers, Chinese characters, or a mixture").performTextInput("1234")
+        rule.onNodeWithText("Numbers, English words, or Chinese characters").performTextInput("1234")
         reach("Cast reading")
         rule.onNodeWithText("Cast reading").performClick()
         waitFor("Reading Result")
@@ -70,6 +70,17 @@ class AppTest {
         rule.onNodeWithText("Delete").performClick()
         rule.onNodeWithText("Confirm deletion").performClick()
         reach("No readings saved yet.")
+    }
+
+    @Test fun EnglishWordsProduceTheExpectedReading() {
+        waitFor("Create a reading")
+        rule.onNodeWithText("Numbers, English words, or Chinese characters").performTextInput("hello")
+        reach("Cast reading")
+        rule.onNodeWithText("Cast reading").performClick()
+        waitFor("Reading Result")
+        rule.onNodeWithText("Fellowship · Tong Ren").assertIsDisplayed()
+        rule.onNodeWithText("The Household · Jia Ren").assertIsDisplayed()
+        reach("Moving lines · 4")
     }
 
     @Test fun manualTossesAllowUndoAndProduceMultipleMovingLines() {

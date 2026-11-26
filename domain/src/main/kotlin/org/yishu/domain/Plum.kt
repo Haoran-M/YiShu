@@ -119,7 +119,10 @@ class PlumCalculator(private val dictionary: StrokeDictionary) {
                 continue
             }
             flushDigits()
-            if (Character.UnicodeScript.of(code) == Character.UnicodeScript.HAN) {
+            if (code in 65..90 || code in 97..122) {
+                val upperCode = if (code in 97..122) code - 32 else code
+                add(Token(raw, upperCode.toChar().toString(), (upperCode - 64).toBigInteger()))
+            } else if (Character.UnicodeScript.of(code) == Character.UnicodeScript.HAN) {
                 val choices = dictionary.choices(raw, rules.strokes)
                 val chosen = overrides[raw] ?: choices.firstOrNull()?.takeIf {
                     it.glyph == raw && choices.count { option -> option.glyph == raw } == 1

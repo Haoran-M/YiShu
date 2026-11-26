@@ -13,6 +13,25 @@ const calendar=calendarFromData(JSON.parse(await assets("vip-content/calendar-da
 const dictionary=strokeDictionary(await assets("assets/strokes.tsv"));
 const settings={stroke:"modern",digits:"digits",odd:"upper",strict:false};
 
+test("English words use A1Z26 in both cases and agree with Android",()=>{
+  const word=calculatePlum({input:"hello",settings,dictionary});
+  assert.equal(word.issues.length,0);
+  assert.deepEqual([...word.upper,...word.lower].map(token=>Number(token.value)),[8,5,12,12,15]);
+  assert.deepEqual([word.upperSum,word.lowerSum,word.moving],[25n,27n,[4]]);
+  const reading=resolveReading(bits,word.bits,word.moving);
+  assert.deepEqual([reading.original.number,reading.changed.number],[13,37]);
+  const upper=calculatePlum({input:"HELLO",settings,dictionary});
+  assert.equal(word.bits,upper.bits);assert.deepEqual(word.moving,upper.moving);
+  const alphabet=calculatePlum({input:"abcdefghijklmnopqrstuvwxyz",settings,dictionary});
+  assert.deepEqual([...alphabet.upper,...alphabet.lower].map(token=>Number(token.value)),Array.from({length:26},(_,i)=>i+1));
+  const mixed=calculatePlum({input:"A1龙z",settings,dictionary});
+  assert.deepEqual([...mixed.upper,...mixed.lower].map(token=>Number(token.value)),[1,1,5,26]);
+  const grouped=calculatePlum({input:"A12z",settings:{...settings,digits:"integer"},dictionary});
+  assert.deepEqual([...grouped.upper,...grouped.lower].map(token=>Number(token.value)),[1,12,26]);
+  assert.ok(calculatePlum({input:"A",settings,dictionary}).issues.length);
+  assert.equal(calculatePlum({input:"A",lowerInput:"Z",settings,dictionary}).issues.length,0);
+});
+
 test("base casts agree with the Android goldens",()=>{
   assert.equal(bits.size,64);
   assert.equal(corpus.flatMap(entry=>entry.lines).length,384);

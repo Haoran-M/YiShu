@@ -69,7 +69,7 @@ internal fun PlumScreen(model: YiShuViewModel, preferences: Preferences) {
     var editing by rememberSaveable { mutableStateOf<String?>(null) }
     var questionOpen by rememberSaveable { mutableStateOf(false) }
     LazyColumn(Modifier.fillMaxWidth(), contentPadding = PagePadding, verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        item { Hero("梅花易数", "用数字、汉字或一句诗起卦。", bits = 0b010001) }
+        item { Hero("梅花易数", "用数字、英文或汉字起卦。", bits = 0b010001) }
         item {
             Panel {
                 Section("起卦输入", "采用自定义梅花易数起卦规则。")
@@ -80,13 +80,15 @@ internal fun PlumScreen(model: YiShuViewModel, preferences: Preferences) {
                 OutlinedTextField(
                     value = form.input, onValueChange = { value -> model.updatePlum { it.copy(input = value, trace = null) } },
                     modifier = Modifier.fillMaxWidth(), enabled = !form.busy,
-                    label = { Text(ui(if (form.dual) "上卦输入" else "数字、汉字或混合文字")) },
-                    placeholder = { Text(ui("例如 1234 或 春风又绿")) }, maxLines = 5,
+                    label = { Text(ui(if (form.dual) "上卦输入" else "数字、英文或汉字")) },
+                    placeholder = { Text(ui("例如 1234、hello 或 春风又绿")) }, maxLines = 5,
                 )
                 if (form.dual) OutlinedTextField(
                     value = form.secondInput, onValueChange = { value -> model.updatePlum { it.copy(secondInput = value, trace = null) } },
                     modifier = Modifier.fillMaxWidth(), enabled = !form.busy, label = { Text(ui("下卦输入")) }, maxLines = 5,
                 )
+                Text(ui("英文字母使用 A 至 Z 的字母表位置，分别计为 1 至 26，不区分大小写。每个字母单独计入，可与数字、汉字混合使用。"),
+                    style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     StrokeMode.entries.forEach { mode ->
                         FilterChip(preferences.plum.strokes == mode, enabled = !form.busy, onClick = {

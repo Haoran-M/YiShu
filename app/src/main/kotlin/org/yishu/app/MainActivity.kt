@@ -176,20 +176,24 @@ private fun YiShuApp(model: YiShuViewModel = viewModel()) {
                                     }
                                 }
                                 Row {
-                                    Box {
-                                        TextButton(onClick = { languageMenu = true }) { Text(if (preferences.english) "EN ▾" else if (preferences.traditional) "繁 ▾" else "简 ▾") }
-                                        DropdownMenu(expanded = languageMenu, onDismissRequest = { languageMenu = false }) {
-                                            listOf("English", "简体中文", "繁體中文").forEachIndexed { index, label ->
-                                                DropdownMenuItem(text = { Text(label) }, onClick = {
-                                                    model.updatePreferences { it.copy(english = index == 0, traditional = index == 2) }
-                                                    languageMenu = false
-                                                })
-                                            }
-                                        }
-                                    }
                                     if (!library) {
                                         TextButton(onClick = { library = true }, enabled = corpus != null) { Text(ui("六十四卦")) }
                                         TextButton(onClick = { VipActivity.open(context, preferences, result) }) { Text("VIP") }
+                                    }
+                                }
+                            }
+                            Row(Modifier.fillMaxWidth().padding(horizontal = 20.dp), verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                                Text("Language / 语言", style = MaterialTheme.typography.bodyMedium)
+                                Box {
+                                    TextButton(onClick = { languageMenu = true }) { Text(if (preferences.english) "English ▾" else if (preferences.traditional) "繁體中文 ▾" else "简体中文 ▾") }
+                                    DropdownMenu(expanded = languageMenu, onDismissRequest = { languageMenu = false }) {
+                                        listOf("English", "简体中文", "繁體中文").forEachIndexed { index, label ->
+                                            DropdownMenuItem(text = { Text(label) }, onClick = {
+                                                model.updatePreferences { it.copy(english = index == 0, traditional = index == 2) }
+                                                languageMenu = false
+                                            })
+                                        }
                                     }
                                 }
                             }
