@@ -1,4 +1,4 @@
-import {branches,civilTime,resolveReading} from "../engine.js";
+import {branches,civilTime,resolveReading} from "../engine.js?v=1.3.2";
 import {dateIndex,stemBranch} from "./calendar-engine.js";
 
 const stems="甲乙丙丁戊己庚辛壬癸";

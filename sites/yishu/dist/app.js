@@ -1,5 +1,5 @@
 import {branches, calculatePlum, castCoins, categories, civilTime, coinLabels, coinResult,
-  conversion, hourInterval, nextHour, resolveReading, strokeDictionary, traditionalHour, trigrams} from "./engine.js";
+  conversion, hourInterval, nextHour, resolveReading, strokeDictionary, traditionalHour, trigrams} from "./engine.js?v=1.3.2";
 import {verifyAccessCode} from "./vip-access.js";
 import {english,englishText} from "./english.js?v=1.3.2";
 import {trackPage} from "./tracking.js";

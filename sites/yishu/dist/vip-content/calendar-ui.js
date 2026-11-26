@@ -1,4 +1,4 @@
-import {branches,civilTime} from "../engine.js";
+import {branches,civilTime} from "../engine.js?v=1.3.2";
 import {calendarFromData,dateIndex,isoDay,lunarDayLabel,lunarMonthLabel} from "./calendar-engine.js";
 
 const response=await fetch(new URL("calendar-data.json",import.meta.url),{cache:"no-store"});

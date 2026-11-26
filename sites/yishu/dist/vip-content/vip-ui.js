@@ -1,4 +1,4 @@
-import {calculatePlum,categories,civilTime,trigrams} from "../engine.js";
+import {calculatePlum,categories,civilTime,trigrams} from "../engine.js?v=1.3.2";
 import {calendarFromData,lunarDayLabel,lunarMonthLabel} from "./calendar-engine.js";
 import {birthReport,topicRequests,variantRules,variants} from "./extended-engine.js";
 import {mountCalendar} from "./calendar-ui.js";
