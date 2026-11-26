@@ -1,5 +1,5 @@
-const cacheName = "yishu-workbench-1.3.2-private3";
-const paths = ["./index.html","./style.css?v=1.3.2","./app.js?v=1.3.2-private3","./engine.js?v=1.3.2","./english.js?v=1.3.2-private","./tracking.js","./assets/english.json","./assets/mark.png","./assets/landscape.jpg",
+const cacheName = "yishu-workbench-1.3.2-coins";
+const paths = ["./index.html","./style.css?v=1.3.2","./app.js?v=1.3.2-coins","./engine.js?v=1.3.2","./english.js?v=1.3.2-private","./tracking.js","./assets/english.json","./assets/mark.png","./assets/landscape.jpg",
   "./assets/hexagrams.json","./assets/strokes.tsv","./assets/STCharacters.txt","./assets/TSCharacters.txt",
   "./assets/TSPhrases.txt","./assets/cc-by-sa-4.0.txt","./assets/opencc-license.txt","./assets/unicode-license.txt",
   "./assets/kangxi-license.txt","./assets/data-manifest.json","./vip-access.js","./vip-public.js"];

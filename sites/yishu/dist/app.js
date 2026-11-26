@@ -183,8 +183,8 @@ function viewCoins() {
   const shakeAvailable = typeof DeviceMotionEvent !== "undefined" && matchMedia("(pointer: coarse)").matches;
   const progress = state.tosses.length;
   const list = state.tosses.map(({total,heads},index) => `<li class="toss-row"><strong>${tx("第"+(index+1)+"爻")} · ${total} · ${tx(coinLabels[total])}</strong>
-    <span>${heads ? heads.map(head => `<span class="coin-face">${tx(head ? "正" : "反")}</span>`).join("") : tx("手工录入")}</span></li>`).reverse().join("");
-  return `<div class="grid"><section class="card">${header("投币起卦","正面 3 点，反面 2 点")}
+    <span>${heads ? heads.map(head => `<span class="coin-face" role="img" aria-label="${tx(head ? "正面" : "反面")}" title="${tx(head ? "正面" : "反面")}">${head ? "H" : "T"}</span>`).join("") : tx("手工录入")}</span></li>`).reverse().join("");
+  return `<div class="grid"><section class="card">${header("投币起卦",`H = ${localized("正面")} (3) · T = ${localized("反面")} (2)`)}
     <div class="coin-status"><progress max="6" value="${progress}" aria-label="${tx("投币进度")}"></progress><strong>${progress} / 6</strong></div>
     <div class="actions manual">${button("投三枚铜钱","toss","primary",progress===6?"disabled":"")}
     ${shakeAvailable ? button(state.shake ? "关闭摇动投币" : "启用摇动投币","shake","") : ""}</div>
