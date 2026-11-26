@@ -526,10 +526,10 @@ function randomToss() {
 async function copyReading(result) {
   if (!result) return;
   const original = corpus[result.original-1], changed = corpus[result.changed-1];
-  const classic = value => settings.script==="traditional" ? value : toSimplified(value);
+  const classic = value => settings.script==="english" && english.classical[value] ? english.classical[value]+"\n"+value : settings.script==="traditional" ? value : toSimplified(value);
   const text = [localized(original.title+" → "+changed.title),classic(original.judgment),
-    ...result.movingLines.map(line=>classic(original.lines[line-1])),localized(result.interpretation.summary),
-    localized(result.interpretation.change),localized(categories[result.category][0]+" · "+result.interpretation.prompt),...result.sources].join("\n");
+    ...result.movingLines.map(line=>classic(original.lines[line-1])),settings.script==="english"?english.hexagrams[original.number-1].reflection:localized(result.interpretation.summary),
+    settings.script==="english"?english.hexagrams[changed.number-1].reflection:localized(result.interpretation.change),localized(categories[result.category][0]+" · "+result.interpretation.prompt),...result.sources].join("\n");
   try { await navigator.clipboard.writeText(text); flash("结果已复制。"); }
   catch { flash("复制失败。你可以手动选取结果文字。"); }
 }
@@ -687,6 +687,6 @@ try {
   }
 } catch (error) {
   console.error(error);
-  content.innerHTML=`<section class="card"><h1>资料暂不可用</h1><p>请重新载入易数通玄。</p></section>`;
+  content.innerHTML=`<section class="card"><h1>Data unavailable</h1><p>Please reload YiShu.</p></section>`;
 }
 
