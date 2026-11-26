@@ -89,6 +89,7 @@ function applyAppearance() {
   const dark = settings.theme === "dark" || (settings.theme === "system" && matchMedia("(prefers-color-scheme: dark)").matches);
   document.documentElement.dataset.theme = dark ? "dark" : "light";
   document.documentElement.lang = settings.script === "english" ? "en" : settings.script === "traditional" ? "zh-Hant" : "zh-Hans";
+  $("#language-switch").value=settings.script;
   $("#brand-title").textContent = localized("易数通玄");
   document.title = localized("易数通玄 · " + pages[state.page][0]);
 }
@@ -105,7 +106,7 @@ function render() {
   applyAppearance();
   $("#breadcrumb").innerHTML = `<span>${tx("易学工具")}</span><span class="slash" aria-hidden="true">/</span><span>${tx(pages[state.page][0])}</span>`;
   $("#navigation").innerHTML = ["plum","coins","hours","library","vip","history","settings"].map(navItem).join("");
-  $("#sidebar-footer").innerHTML = `<a href="downloads.html">${settings.script==="english"?"Download apps and source":"Download / 下载"}</a><span class="muted">${tx("卦例仅保存在此设备")}</span><a href="privacy.html">Privacy and visit tracking</a>`;
+  $("#sidebar-footer").innerHTML = `<a href="downloads.html">${tx("下载应用和源码")}</a><span class="muted">${tx("卦例仅保存在此设备")}</span><a href="privacy.html">${tx("隐私与访问统计")}</a>`;
   if (!corpus) return;
   vipGeneration++;
   vipTick = null;
@@ -281,11 +282,11 @@ function resultCard(result) {
     <div class="actions manual">${button(saved?"已保存":"保存记录","save-result","primary",saved?"disabled":"")}
     ${button("复制结果","copy-result")}</div>
     <section class="text-section"><h3>${tx("卦辞与象意")}</h3><p class="classical">${classical(original.judgment)}</p>
-      <p class="classical">${classical(original.image)}</p><p>${settings.script==="english"?html(english.hexagrams[original.number-1].reflection):tx(result.interpretation.summary)}</p></section>
+      <p class="classical">${classical(original.image)}</p><p>${settings.script==="english"?html(english.hexagrams[original.number-1].reflection):tx(english.hexagrams[original.number-1].chinese.reflection)}</p></section>
     ${moving.length ? `<section class="text-section"><h3>${tx("动爻爻辞")}</h3>${moving.map(line=>`<p class="classical">${classical(original.lines[line-1])}</p>`).join("")}</section>` : ""}
     <section class="text-section"><h3>${tx("变卦象意")}</h3>
       ${original.number !== changed.number ? `<p class="classical">${classical(changed.image)}</p>` : ""}
-      <p>${settings.script==="english"?html(english.hexagrams[changed.number-1].reflection):tx(result.interpretation.change)}</p></section>
+      <p>${settings.script==="english"?html(english.hexagrams[changed.number-1].reflection):tx(english.hexagrams[changed.number-1].chinese.reflection)}</p></section>
     <section class="text-section"><h3>${tx("所问事项")+" · "+tx(categories[result.category][0])}</h3>
       ${result.question ? `<p>${html(result.question)}</p>` : ""}<p>${tx(result.interpretation.prompt)}</p>
       <p class="hint">${tx("卦象与解读仅供传统文化参考。")}</p></section>
@@ -354,10 +355,11 @@ function libraryList() {
 }
 function libraryDetail(entry) {
   if (!entry) return "";
+  const explanation=settings.script==="english"?english.hexagrams[entry.number-1]:english.hexagrams[entry.number-1].chinese;
   return `<section class="card" id="hex-detail" aria-label="${tx(entry.title)}">
     ${header(entry.title,"文王卦序 · "+entry.number)}
     <p class="hint">${tx(trigrams[entry.upper][0]+"上 · "+trigrams[entry.lower][0]+"下")}</p>
-    <section class="text-section"><h3>Understanding this gua</h3><p>${html(english.hexagrams[entry.number-1].meaning)}</p><h3>A question for reflection</h3><p>${html(english.hexagrams[entry.number-1].reflection)}</p><p class="hint">Original English explanatory paraphrases. The Chinese classical text appears alongside them.</p></section>
+    <section class="text-section"><h3>${tx("理解此卦")}</h3><p>${tx(explanation.meaning)}</p><h3>${tx("反思提示")}</h3><p>${tx(explanation.reflection)}</p><p class="hint">${tx("以下解读是现代释义，保留经文供对照。")}</p></section>
     <div class="text-section"><h3>${tx("卦辞")}</h3><p class="classical">${classical(entry.judgment)}</p></div>
     <div class="text-section"><h3>${tx("大象")}</h3><p class="classical">${classical(entry.image)}</p></div>
     <div class="text-section"><h3>${tx("六爻爻辞")}</h3>${[...entry.lines,...(entry.extra?[entry.extra]:[])].map(line=>`<p class="classical quotation-line">${classical(line)}</p>`).join("")}</div>
@@ -678,8 +680,8 @@ try {
   history=history.filter(entry=>corpus[entry.original-1] && corpus[entry.changed-1] && Array.isArray(entry.movingLines) &&
     Object.hasOwn(categories,entry.category) && entry.interpretation && entry.calculation);
   dictionary=strokeDictionary(strokes);
-  toTraditional=conversion(st);
-  toSimplified=conversion(ts,phrases);
+  toTraditional=conversion(st,"咸\t咸");
+  toSimplified=conversion(ts,phrases,"乾：\t乾：\n乾乾\t乾乾");
   route();
   setInterval(clock,1000);
   if ("serviceWorker" in navigator && !nativeApp) {

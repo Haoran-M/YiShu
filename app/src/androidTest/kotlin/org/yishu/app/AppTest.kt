@@ -26,6 +26,21 @@ class AppTest {
         rule.onAllNodes(hasScrollAction()).onFirst().performScrollToNode(hasText(text))
     }
 
+    @Test fun languageSwitchSupportsChineseAndPersistsAcrossRecreation() {
+        waitFor("Create a reading")
+        rule.onNodeWithText("EN ▾").performClick()
+        rule.onNodeWithText("简体中文").performClick()
+        waitFor("起卦输入")
+        rule.activityRule.scenario.recreate()
+        waitFor("起卦输入")
+        rule.onNodeWithText("简 ▾").performClick()
+        rule.onNodeWithText("繁體中文").performClick()
+        waitFor("起卦輸入")
+        rule.onNodeWithText("繁 ▾").performClick()
+        rule.onNodeWithText("English").performClick()
+        waitFor("Create a reading")
+    }
+
     @Test fun numericalReadingCanBeSavedReopenedAndDeleted() {
         waitFor("Create a reading")
         rule.onNodeWithText("Numbers, Chinese characters, or a mixture").performTextInput("1234")

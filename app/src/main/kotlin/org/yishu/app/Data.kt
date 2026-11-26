@@ -101,8 +101,8 @@ internal class Corpus(private val assets: AssetManager) {
         }
     }
 
-    private val toTraditional = conversion("STCharacters")
-    private val toSimplified = conversion("TSCharacters") + conversion("TSPhrases")
+    private val toTraditional = conversion("STCharacters") + mapOf("咸" to "咸")
+    private val toSimplified = conversion("TSCharacters") + conversion("TSPhrases") + mapOf("乾：" to "乾：", "乾乾" to "乾乾")
     private val longestSimplified = toSimplified.keys.maxOf(String::length)
 
     fun interfaceText(text: String, traditional: Boolean): String =

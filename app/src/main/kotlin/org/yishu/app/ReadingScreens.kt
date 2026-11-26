@@ -63,8 +63,10 @@ internal fun ResultScreen(result: Result, saved: Boolean, save: () -> Unit, show
     val moving = if (reading.moving.isEmpty()) noMoving else "${ui("动爻")} · ${reading.moving.joinToString("、")}"
     val lines = reading.moving.map { classic(reading.original.lineTexts[it - 1]) }
     val judgment = classic(reading.original.judgment)
-    val summary = if (LocalEnglish.current) LocalCorpus.current?.englishGua(reading.original.number)?.getString("reflection") ?: ui(result.explanation.summary) else ui(result.explanation.summary)
-    val change = if (LocalEnglish.current) LocalCorpus.current?.englishGua(reading.changed.number)?.getString("reflection") ?: ui(result.explanation.change) else ui(result.explanation.change)
+    val summaryGua = LocalCorpus.current?.englishGua(reading.original.number)
+    val changeGua = LocalCorpus.current?.englishGua(reading.changed.number)
+    val summary = if (LocalEnglish.current) summaryGua?.getString("reflection") ?: ui(result.explanation.summary) else ui(summaryGua?.getJSONObject("chinese")?.getString("reflection") ?: result.explanation.summary)
+    val change = if (LocalEnglish.current) changeGua?.getString("reflection") ?: ui(result.explanation.change) else ui(changeGua?.getJSONObject("chinese")?.getString("reflection") ?: result.explanation.change)
     val category = ui(result.category.label)
     val reflection = ui(result.explanation.questionPrompt)
     val reference = ui("仅供传统文化参考。")
@@ -294,15 +296,16 @@ private fun TrigramMenu(label: String, selected: Int?, change: (Int?) -> Unit) {
 @Composable
 internal fun HexagramScreen(hexagram: Hexagram) {
     val english = LocalCorpus.current?.englishGua(hexagram.number)
+    val explanation = if (LocalEnglish.current) english else english?.getJSONObject("chinese")
     LazyColumn(Modifier.fillMaxWidth(), contentPadding = PagePadding, verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item { Hero(hexagram.title, "第 ${hexagram.number} 卦  ·  ${hexagram.upper.nameZh}上 ${hexagram.lower.nameZh}下", hexagram.bits) }
-        if (english != null) item {
+        if (explanation != null) item {
             Panel {
-                Section("Understanding this gua")
-                Text(english.getString("meaning"))
-                Section("A question for reflection")
-                Text(english.getString("reflection"))
-                Text("Original English explanatory paraphrases, with Chinese source text for comparison.", style = MaterialTheme.typography.bodyMedium)
+                Section("理解此卦")
+                Text(ui(explanation.getString("meaning")))
+                Section("反思提示")
+                Text(ui(explanation.getString("reflection")))
+                Text(ui("以下解读是现代释义，保留经文供对照。"), style = MaterialTheme.typography.bodyMedium)
             }
         }
         item {

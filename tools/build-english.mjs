@@ -4,12 +4,14 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 const read=p=>readFile(root+p,'utf8');
 const corpus=JSON.parse(await read('sites/yishu/dist/assets/hexagrams.json'));
 const rows=(await read('tools/english-gua.txt')).trim().split(/\r?\n/);
+const chinese=(await read('tools/chinese-gua.txt')).trim().split(/\r?\n/).map(row=>{const [meaning,reflection]=row.split('|');return {meaning,reflection};});
+if(chinese.length!==64||chinese.some(row=>!row.meaning||!row.reflection)) throw new Error('Incomplete Chinese explanations');
 if(rows.length!==64) throw new Error('Expected 64 English gua');
 const english=rows.map((row,index)=>{
   const [pinyin,name,meaning,image,reflection,notes]=row.split('|');
   const lines=notes?.split(/;(?=\S)/);
   if(!meaning||!reflection||lines?.length!==6) throw new Error('Incomplete gua '+(index+1));
-  return {number:index+1,pinyin,name,meaning,image,reflection,lines,
+  return {number:index+1,pinyin,name,meaning,image,reflection,lines,chinese:chinese[index],
     ...(index===0?{extra:'When all six lines change, the image of dragons without a single dominating head suggests shared strength without overbearing leadership.'}:{}),
     ...(index===1?{extra:'When all six lines change, remain faithful to an enduring, receptive commitment.'}:{})};
 });

@@ -617,6 +617,11 @@
     "规则": "rules",
     "点": "points",
     "合计": "total",
+    "理解此卦": "Understanding this gua",
+    "反思提示": "A question for reflection",
+    "以下解读是现代释义，保留经文供对照。": "These are modern explanatory paraphrases, with the Chinese classics retained for comparison.",
+    "下载应用和源码": "Download apps and source",
+    "隐私与访问统计": "Privacy and visit tracking",
     "初一": "Day 1",
     "初二": "Day 2",
     "初三": "Day 3",
@@ -1266,6 +1271,10 @@
         "Use a position of influence wisely and welcome good counsel.",
         "Going beyond your proper limits invites regret."
       ],
+      "chinese": {
+        "meaning": "乾卦象征主动创造和持续努力。能力应配合时机，以诚信和恒心推进，不宜逞强。",
+        "reflection": "选定值得投入的方向，再用稳定的行动逐步完成。"
+      },
       "extra": "When all six lines change, the image of dragons without a single dominating head suggests shared strength without overbearing leadership."
     },
     {
@@ -1283,6 +1292,10 @@
         "Unassuming excellence brings the best outcome.",
         "Competing forces that refuse their proper limits end in mutual injury."
       ],
+      "chinese": {
+        "meaning": "坤卦象征承载、配合和滋养。柔顺并非没有主见，而是善于倾听，找到合适的位置并坚持到底。",
+        "reflection": "先了解实际需要，再建立可靠的支持。"
+      },
       "extra": "When all six lines change, remain faithful to an enduring, receptive commitment."
     },
     {
@@ -1299,7 +1312,11 @@
         "Seek the partnership you need and make a considered approach.",
         "Limited resources support modest steps rather than a sweeping commitment.",
         "Repeated confusion and distress call for a pause and support."
-      ]
+      ],
+      "chinese": {
+        "meaning": "屯卦说明新事物初生时常有混乱和阻力。此时宜整理基础、寻找伙伴，不必急于大举推进。",
+        "reflection": "把开始的困难拆成小步骤，先解决最关键的一项。"
+      }
     },
     {
       "number": 4,
@@ -1315,7 +1332,11 @@
         "Remaining isolated in confusion brings difficulty.",
         "A humble beginner's openness is promising.",
         "Correct harmful behavior without becoming aggressive yourself."
-      ]
+      ],
+      "chinese": {
+        "meaning": "蒙卦谈求学和启蒙。承认不懂、真诚请教并落实练习，比反复追问自己想听的答案更有益。",
+        "reflection": "明确一个疑问，寻找可靠指导，并实践所学。"
+      }
     },
     {
       "number": 5,
@@ -1331,7 +1352,11 @@
         "When danger is immediate, seek a way out rather than remaining trapped.",
         "Accept nourishment and stability without abandoning your principles.",
         "Meet unexpected arrivals with respect; they may change the outcome."
-      ]
+      ],
+      "chinese": {
+        "meaning": "需卦谈有准备地等待。条件尚未成熟时，保持信心、照顾自身并积蓄力量，胜过焦急冒进。",
+        "reflection": "利用等待的时间准备，并想清何种条件出现后才行动。"
+      }
     },
     {
       "number": 6,
@@ -1347,7 +1372,11 @@
         "Accept a changed course and return to steady conduct.",
         "Fair and capable judgment can resolve the dispute well.",
         "A prize won through conflict may be taken away just as quickly."
-      ]
+      ],
+      "chinese": {
+        "meaning": "讼卦提醒争执可能使真诚的立场陷入僵局。宜及早节制，厘清事实，寻求公正调解。",
+        "reflection": "明确分歧和证据，寻找双方可以接受的收束点。"
+      }
     },
     {
       "number": 7,
@@ -1363,7 +1392,11 @@
         "An orderly retreat can be the correct decision.",
         "Choose capable leadership; dividing responsibility among the unqualified is dangerous.",
         "After success, distribute responsibility carefully and avoid rewarding harmful conduct."
-      ]
+      ],
+      "chinese": {
+        "meaning": "师卦谈集体行动中的纪律与领导。真正的力量来自清楚的职责、可靠的带领和对成员的照顾。",
+        "reflection": "先确认目标、分工和负责人是否合适。"
+      }
     },
     {
       "number": 8,
@@ -1379,7 +1412,11 @@
         "A suitable connection beyond your immediate circle can be beneficial.",
         "Good leadership invites freely rather than capturing everyone by force.",
         "A union without a guiding purpose loses its direction."
-      ]
+      ],
+      "chinese": {
+        "meaning": "比卦谈结伴与归属。与人联合前，应检视共同的价值、彼此的诚意和长期承担的能力。",
+        "reflection": "选择值得信任的伙伴，并持续做好自己的部分。"
+      }
     },
     {
       "number": 9,
@@ -1395,7 +1432,11 @@
         "Sincerity can reduce fear and avert injury.",
         "Mutual trust lets resources benefit a wider circle.",
         "Once enough has accumulated, settle; pressing further can create danger."
-      ]
+      ],
+      "chinese": {
+        "meaning": "小畜卦像密云尚未成雨。大局暂难突破时，可以从小处积累，改善表达、细节和合作。",
+        "reflection": "先做好能够掌握的一项小改进，等待条件成熟。"
+      }
     },
     {
       "number": 10,
@@ -1411,7 +1452,11 @@
         "A healthy respect for danger supports a safe outcome.",
         "Decisive action still needs awareness of risk.",
         "Review the whole course of your conduct before judging its success."
-      ]
+      ],
+      "chinese": {
+        "meaning": "履卦以踏近虎尾比喻接触权力或风险。谨慎、分寸和准确判断自身能力，有助于平稳前进。",
+        "reflection": "确认界限与责任，再采取合宜的行动。"
+      }
     },
     {
       "number": 11,
@@ -1427,7 +1472,11 @@
         "Sincere cooperation need not depend on wealth or status.",
         "A respectful alliance can bring lasting benefit.",
         "When the structure gives way, avoid a forceful attempt to recover everything."
-      ]
+      ],
+      "chinese": {
+        "meaning": "泰卦象征上下相通、彼此支持。顺利的环境利于共同发展，也需要为之后的变化作准备。",
+        "reflection": "趁条件较好时加强合作，并巩固基础。"
+      }
     },
     {
       "number": 12,
@@ -1443,7 +1492,11 @@
         "Act when you have a legitimate purpose and the right support.",
         "Even as the blockage eases, secure the gains carefully.",
         "Standstill can eventually overturn and give way to relief."
-      ]
+      ],
+      "chinese": {
+        "meaning": "否卦象征沟通受阻、共同目标难以落实。宜保存实力与原则，减少无益投入，等待可行的转机。",
+        "reflection": "分清真正的阻碍，并保护最重要的工作与资源。"
+      }
     },
     {
       "number": 13,
@@ -1459,7 +1512,11 @@
         "Choosing not to attack can create a better outcome.",
         "After separation and struggle, sincere partners may reunite.",
         "A more distant connection can be free of regret even without full intimacy."
-      ]
+      ],
+      "chinese": {
+        "meaning": "同人卦谈超越小圈子的合作。开放而公正的共同目标，能够让不同背景的人一同面对困难。",
+        "reflection": "寻找大家都愿意支持的具体目标。"
+      }
     },
     {
       "number": 14,
@@ -1475,7 +1532,11 @@
         "Do not compete ostentatiously with those around you.",
         "Combine sincerity with the dignity needed to lead.",
         "Support grows when success is handled generously and responsibly."
-      ]
+      ],
+      "chinese": {
+        "meaning": "大有卦象征资源、能力或影响力充足。拥有越多，越应思考如何善用并承担相应责任。",
+        "reflection": "盘点现有资源，让优势服务于有价值的事情。"
+      }
     },
     {
       "number": 15,
@@ -1491,7 +1552,11 @@
         "Put modesty into practical action.",
         "Humility can coexist with firm action against a genuine problem.",
         "Begin necessary correction close to home."
-      ]
+      ],
+      "chinese": {
+        "meaning": "谦卦谈准确看待自己的长处和不足。谦逊重在踏实完成工作，并公平调整过多与不足。",
+        "reflection": "让行动体现贡献，把多余的资源用于真正的需要。"
+      }
     },
     {
       "number": 16,
@@ -1507,7 +1572,11 @@
         "Grounded confidence can bring willing companions together.",
         "A persistent limitation calls for ongoing care rather than denial.",
         "If excitement has become blindness, changing course can remove the fault."
-      ]
+      ],
+      "chinese": {
+        "meaning": "豫卦谈热情、准备和群体动力。兴奋需要清楚的组织与判断，才能转化为有用的行动。",
+        "reflection": "把灵感变成计划，并确认参与者理解各自的任务。"
+      }
     },
     {
       "number": 17,
@@ -1523,7 +1592,11 @@
         "Success attracts followers; keep your motives transparent.",
         "Trust in what is good brings a sound connection.",
         "A deep, enduring bond calls for serious commitment."
-      ]
+      ],
+      "chinese": {
+        "meaning": "随卦谈顺应变化与选择值得追随的方向。灵活不等于盲从，调整方法时仍应守住原则。",
+        "reflection": "辨别何者值得投入，再灵活改变做法。"
+      }
     },
     {
       "number": 18,
@@ -1539,7 +1612,11 @@
         "Tolerating old neglect allows the problem to continue.",
         "Thoughtful repair earns respect.",
         "Sometimes the right contribution lies outside official ambition."
-      ]
+      ],
+      "chinese": {
+        "meaning": "蛊卦谈修复积弊。过去遗留的问题可以整治，但要先查明根源，事后检视，防止再次发生。",
+        "reflection": "修复造成问题的过程，而不仅是处理表面症状。"
+      }
     },
     {
       "number": 19,
@@ -1555,7 +1632,11 @@
         "Be fully present when offering help.",
         "Wise leadership delegates while understanding the larger purpose.",
         "A generous, wholehearted approach brings benefit."
-      ]
+      ],
+      "chinese": {
+        "meaning": "临卦象征影响力逐渐扩大。此时宜亲近、教导和支持他人，同时记得增长有其周期。",
+        "reflection": "把增长的能力用于帮助别人，并为放缓作准备。"
+      }
     },
     {
       "number": 20,
@@ -1571,7 +1652,11 @@
         "Study a community's best qualities and learn from capable leadership.",
         "Assess your influence through the effects of your conduct.",
         "Look beyond self-interest to the pattern of a whole life."
-      ]
+      ],
+      "chinese": {
+        "meaning": "观卦谈观察与自省。行动前认真看清环境，也要意识到自己的言行同样受到他人观察。",
+        "reflection": "暂缓判断，检查假设，并考虑他人的实际感受。"
+      }
     },
     {
       "number": 21,
@@ -1587,7 +1672,11 @@
         "Persist through a difficult issue with clarity and steadiness.",
         "Responsible judgment combines balance with awareness of risk.",
         "Ignoring correction until one can no longer hear it leads to harm."
-      ]
+      ],
+      "chinese": {
+        "meaning": "噬嗑卦像咬开阻隔，谈清除妨碍秩序的问题。处理时须有明确标准、事实依据和适当分寸。",
+        "reflection": "指出真正的障碍，用公平程序直接处理。"
+      }
     },
     {
       "number": 22,
@@ -1603,7 +1692,11 @@
         "Plain sincerity can reveal a friendly intention behind an unfamiliar appearance.",
         "A modest, sincere gift can matter more than an impressive one.",
         "Unadorned simplicity can be the finest form of grace."
-      ]
+      ],
+      "chinese": {
+        "meaning": "贲卦谈形式、修饰和表达。美好的呈现能够帮助理解，但不应代替对内容本身的判断。",
+        "reflection": "改善表达方式，同时核实内容是否扎实。"
+      }
     },
     {
       "number": 23,
@@ -1619,7 +1712,11 @@
         "When erosion reaches immediate safety, take it seriously.",
         "Orderly cooperation can soften a difficult situation.",
         "Preserve the remaining seed of renewal rather than consuming it."
-      ]
+      ],
+      "chinese": {
+        "meaning": "剥卦象征支撑结构正在削弱。与其继续扩张，不如保护基础、减少消耗，保存更新的可能。",
+        "reflection": "优先修补基本支持，降低不必要的风险暴露。"
+      }
     },
     {
       "number": 24,
@@ -1635,7 +1732,11 @@
         "Choose the right course even when you must do so alone.",
         "A wholehearted return leaves little cause for regret.",
         "Losing the path of return can make a forceful undertaking deeply costly."
-      ]
+      ],
+      "chinese": {
+        "meaning": "复卦谈衰退后的初步回转。恢复需要时间与保护，不能因看到一点起色就要求立即强盛。",
+        "reflection": "回到一个可靠的习惯，让小小的改变稳定下来。"
+      }
     },
     {
       "number": 25,
@@ -1651,7 +1752,11 @@
         "Remain true to a sound course.",
         "The old image counsels against unnecessary intervention in a passing disturbance; it is not medical advice.",
         "Even sincere action can be mistimed; stop when conditions do not support it."
-      ]
+      ],
+      "chinese": {
+        "meaning": "无妄卦谈真诚、自然和不强求。应根据实际情况行动，而不是以主观愿望制造结果。",
+        "reflection": "检查动机，采取当下合宜的一步，不急于操控结局。"
+      }
     },
     {
       "number": 26,
@@ -1667,7 +1772,11 @@
         "Address a powerful impulse while it is still manageable.",
         "Remove the source of aggression rather than merely resisting its force.",
         "When preparation is complete, a broad path can open."
-      ]
+      ],
+      "chinese": {
+        "meaning": "大畜卦谈积累能力和约束力量。通过学习、训练和借鉴经验，为更大的责任作准备。",
+        "reflection": "先练好需要的能力，再承担更大的任务。"
+      }
     },
     {
       "number": 27,
@@ -1683,7 +1792,11 @@
         "Attentively seeking the right support can serve a good purpose.",
         "Accept a necessary dependence without rushing into a major undertaking.",
         "Providing nourishment to others brings responsibility as well as opportunity."
-      ]
+      ],
+      "chinese": {
+        "meaning": "颐卦谈滋养，包括饮食、言语、信息和互相支持的方式。应关注自己从何获取力量。",
+        "reflection": "检视日常摄取的事物是否真正有益。"
+      }
     },
     {
       "number": 28,
@@ -1699,7 +1812,11 @@
         "A strong central support helps, while distracting additions can weaken it.",
         "Surface blossoming is not the same as lasting renewal.",
         "A courageous crossing can still exceed safe limits."
-      ]
+      ],
+      "chinese": {
+        "meaning": "大过卦像屋梁承重过大，说明原有结构难以承受压力。此时可能需要调整结构，而非继续加力。",
+        "reflection": "先减轻负担或增强支持，再要求更多成果。"
+      }
     },
     {
       "number": 29,
@@ -1715,7 +1832,11 @@
         "Simple, direct sincerity can reach someone when ceremony cannot.",
         "Let the situation reach a workable level before trying to overflow its bounds.",
         "Entrenched entanglement can become prolonged confinement."
-      ]
+      ],
+      "chinese": {
+        "meaning": "坎卦谈反复出现的险境。诚实、熟练的应对和稳定的心态，有助于一步步找到通路。",
+        "reflection": "找到下一个安全落脚点，练习能实际降低风险的做法。"
+      }
     },
     {
       "number": 30,
@@ -1731,7 +1852,11 @@
         "A sudden uncontrolled flare can consume its own support.",
         "Honest grief and concern can lead to wiser conduct.",
         "Address the central cause of harm without punishing everyone around it."
-      ]
+      ],
+      "chinese": {
+        "meaning": "离卦谈光明及其依托。火需要燃料，清楚的判断也需要可靠的原则、知识和持续照顾。",
+        "reflection": "检查自己的判断依靠什么，并维护这些基础。"
+      }
     },
     {
       "number": 31,
@@ -1747,7 +1872,11 @@
         "Steady sincerity is more reliable than anxious attempts to control a response.",
         "A quiet response need not become outward action.",
         "Words alone may remain superficial if they are not grounded in feeling and conduct."
-      ]
+      ],
+      "chinese": {
+        "meaning": "咸卦谈相互感应与影响。真正的关系需要留出回应的空间，而非单方面施加控制。",
+        "reflection": "先倾听，再表达，观察影响是否双向。"
+      }
     },
     {
       "number": 32,
@@ -1763,7 +1892,11 @@
         "Persisting in an unproductive field does not create a harvest.",
         "The historical gendered image distinguishes receptive constancy from the judgment required of leadership.",
         "Restless agitation prevents genuine continuity."
-      ]
+      ],
+      "chinese": {
+        "meaning": "恒卦谈长期坚持。方向可以稳定，方法仍需适应变化；持续应来自实践，而不是僵化。",
+        "reflection": "选定值得长久投入的承诺，并检查习惯是否支持它。"
+      }
     },
     {
       "number": 33,
@@ -1779,7 +1912,11 @@
         "Voluntary withdrawal is easier when status does not control your choices.",
         "A dignified retreat can be timely and sound.",
         "Free, unburdened withdrawal leaves options open."
-      ]
+      ],
+      "chinese": {
+        "meaning": "遁卦谈适时退让。离开不利环境能够保护实力和原则，退并非一定是失败。",
+        "reflection": "设定界限，减少无益的牵连，为未来保留选择。"
+      }
     },
     {
       "number": 34,
@@ -1795,7 +1932,11 @@
         "A clear opening supports progress without entanglement.",
         "Letting go of a contest can remove regret.",
         "When unable either to advance or retreat, admit the difficulty and reassess."
-      ]
+      ],
+      "chinese": {
+        "meaning": "大壮卦谈强大力量的适当运用。越有能力，越需要守住分寸，避免被冲动或争胜困住。",
+        "reflection": "使用影响力前，检查目的、界限和对他人的影响。"
+      }
     },
     {
       "number": 35,
@@ -1811,7 +1952,11 @@
         "Acquisitive, furtive progress is unstable.",
         "Do not let every gain or loss distract you from a sound advance.",
         "Force belongs only to a narrowly justified correction, not a general style of leadership."
-      ]
+      ],
+      "chinese": {
+        "meaning": "晋卦像光明升出地面，象征进展与受到看见。宜以真实贡献支撑提升。",
+        "reflection": "接住合适的机会，同时使自己的工作更清楚、更有价值。"
+      }
     },
     {
       "number": 36,
@@ -1827,7 +1972,11 @@
         "Understanding the inner problem can show when it is time to leave.",
         "Integrity can survive behind an outwardly cautious position.",
         "Power that first rises and then extinguishes understanding ultimately collapses."
-      ]
+      ],
+      "chinese": {
+        "meaning": "明夷卦谈光明受到压抑的处境。此时可谨慎表达，保护重要信念，而不必处处公开立场。",
+        "reflection": "寻找安全支持，并审慎选择何时、向谁透露想法。"
+      }
     },
     {
       "number": 37,
@@ -1843,7 +1992,11 @@
         "Good stewardship brings well-being to the household.",
         "Leadership grounded in mutual care need not rely on fear.",
         "Sincerity joined with consistent boundaries builds lasting respect."
-      ]
+      ],
+      "chinese": {
+        "meaning": "家人卦谈家庭或亲密团队中的责任与信任。古代的性别分工可转化为现代对公平角色和相互照顾的讨论。",
+        "reflection": "通过尊重的沟通，确认责任与界限。"
+      }
     },
     {
       "number": 38,
@@ -1859,7 +2012,11 @@
         "In isolation, one sincere ally can change the situation.",
         "When a close connection breaks through misunderstanding, approach it.",
         "Fear can mistake an ally for a threat; test assumptions before acting."
-      ]
+      ],
+      "chinese": {
+        "meaning": "睽卦谈差异与分歧。不同立场不一定意味着完全断裂，小范围的合作仍可能实现。",
+        "reflection": "先寻找一件双方能共同完成的小事。"
+      }
     },
     {
       "number": 39,
@@ -1875,7 +2032,11 @@
         "Return to build an alliance rather than struggle alone.",
         "In a major difficulty, friends and allies matter.",
         "Return with a larger perspective and seek capable counsel."
-      ]
+      ],
+      "chinese": {
+        "meaning": "蹇卦谈道路受阻。与其硬闯，不如回到支持自己的地方，寻找有经验的人并反省方法。",
+        "reflection": "查明障碍，补足支持，再判断何时继续。"
+      }
     },
     {
       "number": 40,
@@ -1891,7 +2052,11 @@
         "Release an unhelpful attachment so trustworthy people can approach.",
         "A real release from harmful ties becomes visible to others.",
         "A well-aimed action can remove a remaining obstruction."
-      ]
+      ],
+      "chinese": {
+        "meaning": "解卦谈紧张缓解和束缚解除。该处理的事要及时完成，已经过去的纠结则可以逐渐放下。",
+        "reflection": "解决剩余问题后，减少不必要的责备与消耗。"
+      }
     },
     {
       "number": 41,
@@ -1907,7 +2072,11 @@
         "Removing a harmful habit creates room for relief.",
         "Unexpected support can arrive when your position is sound.",
         "A balanced contribution can benefit others without diminishing what is essential."
-      ]
+      ],
+      "chinese": {
+        "meaning": "损卦谈有意识地减少。真诚且适度的付出能够恢复平衡，但不应损坏维持生活的根本。",
+        "reflection": "减少一项过度投入，同时保护必要资源。"
+      }
     },
     {
       "number": 42,
@@ -1923,7 +2092,11 @@
         "A balanced proposal can gain the support needed for a major change.",
         "A sincerely helpful intention can create trust without constant reassurance.",
         "Endless demands for personal gain undermine support."
-      ]
+      ],
+      "chinese": {
+        "meaning": "益卦谈增益与共同成长。增加的资源和机会，宜用于改善整体，而非只满足个人索取。",
+        "reflection": "把现有优势用于一件能让更多人受益的事情。"
+      }
     },
     {
       "number": 43,
@@ -1939,7 +2112,11 @@
         "Listen to useful guidance even when it is uncomfortable.",
         "Remove the persistent problem while staying balanced.",
         "Ignoring a final warning can spoil the resolution."
-      ]
+      ],
+      "chinese": {
+        "meaning": "夬卦谈明确而有分寸的决断。应公开指出有害的模式，但避免把解决问题变成鲁莽的对抗。",
+        "reflection": "说清问题、争取支持，再采取适当的一步。"
+      }
     },
     {
       "number": 44,
@@ -1955,7 +2132,11 @@
         "Losing contact with the practical source of support creates trouble.",
         "Protect what is valuable and let the next development reveal itself.",
         "A harsh, prideful response can shut down a useful meeting."
-      ]
+      ],
+      "chinese": {
+        "meaning": "姤卦谈突然出现而影响强烈的相遇。古代婚姻警语可理解为：面对吸引力强的新影响，不宜仓促绑定。",
+        "reflection": "先观察和设立界限，再决定是否长期投入。"
+      }
     },
     {
       "number": 45,
@@ -1971,7 +2152,11 @@
         "Accept a useful place in the gathering without self-importance.",
         "A formal position earns trust through enduring integrity.",
         "Openly acknowledging grief or exclusion need not be a fault."
-      ]
+      ],
+      "chinese": {
+        "meaning": "萃卦谈人群与资源的聚集。共同意义、可信领导和清楚责任，才能让聚集成为有效合作。",
+        "reflection": "明确为何聚在一起，并落实集体的责任。"
+      }
     },
     {
       "number": 46,
@@ -1987,7 +2172,11 @@
         "Honor the foundations and relationships that support the rise.",
         "Climb one established step at a time.",
         "Do not pursue advancement blindly; sustain the right purpose."
-      ]
+      ],
+      "chinese": {
+        "meaning": "升卦谈循序上升。细小但方向正确的努力，能够逐渐积累成较大的成果。",
+        "reflection": "找出下一步可以做到的事，并持续记录进展。"
+      }
     },
     {
       "number": 47,
@@ -2003,7 +2192,11 @@
         "Help may arrive slowly and awkwardly but can still matter.",
         "Gradual relief becomes possible through sincere, steady effort.",
         "Recognize entanglement, accept the need to change, and begin moving out."
-      ]
+      ],
+      "chinese": {
+        "meaning": "困卦谈资源匮乏与行动受限。反复解释未必有效，保存必要力量、维持内在方向更为重要。",
+        "reflection": "减少负担，保护基本需要，寻找实际可得的帮助。"
+      }
     },
     {
       "number": 48,
@@ -2019,7 +2212,11 @@
         "Repairing the structure is worthwhile even before it produces a visible result.",
         "A clean, reliable source can sustain others.",
         "Keep the resource accessible and maintain the trust around it."
-      ]
+      ],
+      "chinese": {
+        "meaning": "井卦像长期滋养共同体的水井。资源的价值不仅在于存在，还在于维护妥善、让人真正取得。",
+        "reflection": "修复共同使用的资源，并处理阻碍使用的最后一环。"
+      }
     },
     {
       "number": 49,
@@ -2035,7 +2232,11 @@
         "A trustworthy mandate makes change legitimate.",
         "A mature transformation becomes clear in its visible pattern.",
         "Consolidate real change rather than demanding endless outward conformity."
-      ]
+      ],
+      "chinese": {
+        "meaning": "革卦谈深层变革。变化需要适当时机、可信的理由和实际行动，不能只凭口号。",
+        "reflection": "说明改变的必要性，充分准备，并让效果建立信任。"
+      }
     },
     {
       "number": 50,
@@ -2051,7 +2252,11 @@
         "Weak supports can ruin what the group depends on.",
         "Balanced leadership and strong assistance make the vessel dependable.",
         "A refined, well-supported undertaking can serve a broad good."
-      ]
+      ],
+      "chinese": {
+        "meaning": "鼎卦以烹饪的器具象征转化与共同滋养。长久的更新需要合适的人、稳定的制度与清楚的职责。",
+        "reflection": "改善承载工作的人员、工具和协作方式。"
+      }
     },
     {
       "number": 51,
@@ -2067,7 +2272,11 @@
         "Becoming stuck in confusion prevents recovery.",
         "Repeated disturbances call for attention to the essential task.",
         "Learn from a nearby warning before making an impulsive move."
-      ]
+      ],
+      "chinese": {
+        "meaning": "震卦谈突如其来的震动。惊惧之后，重要的是恢复镇定，并守住仍须照顾的责任。",
+        "reflection": "先稳定自己，再确认最要紧的任务。"
+      }
     },
     {
       "number": 52,
@@ -2083,7 +2292,11 @@
         "Bring your own actions to rest without policing everything around you.",
         "Measured, trustworthy speech removes regret.",
         "A settled, generous stillness is favorable."
-      ]
+      ],
+      "chinese": {
+        "meaning": "艮卦谈适时停止与安定。止不是压住所有感受，而是停止无益反应，把注意力放回应负的责任。",
+        "reflection": "暂停反应，分清哪些事属于自己的职责。"
+      }
     },
     {
       "number": 53,
@@ -2099,7 +2312,11 @@
         "Find a workable resting place even in unfamiliar surroundings.",
         "A delayed result can still arrive when the underlying bond is sound.",
         "Mature development can become an example that benefits others."
-      ]
+      ],
+      "chinese": {
+        "meaning": "渐卦谈按阶段发展的长期过程。像树木扎根山上，稳固的基础与耐心比跳过步骤更有价值。",
+        "reflection": "尊重发展的次序，巩固通往下一步的基础。"
+      }
     },
     {
       "number": 54,
@@ -2115,7 +2332,11 @@
         "A delayed commitment may be better than a rushed one.",
         "Modest sincerity matters more than superior appearance.",
         "An empty ceremony cannot replace real substance or mutual contribution."
-      ]
+      ],
+      "chinese": {
+        "meaning": "归妹卦谈地位不对等的承诺。古代婚姻形象提醒我们检查时机、条款及双方是否有真正的选择。",
+        "reflection": "接受安排前，确认同意、期待与责任是否公平。"
+      }
     },
     {
       "number": 55,
@@ -2131,7 +2352,11 @@
         "An equal-minded ally can help in a confusing situation.",
         "Welcome capable people and the recognition that follows useful work.",
         "Grandeur that isolates its owner can become an empty, closed house."
-      ]
+      ],
+      "chinese": {
+        "meaning": "丰卦谈充盛与繁忙的高峰。宜及时善用资源和清晰判断，也要记得高峰会变化。",
+        "reflection": "把握目前的条件作出适时决定，并合理分享资源。"
+      }
     },
     {
       "number": 56,
@@ -2147,7 +2372,11 @@
         "Having equipment and a place to stay may still fall short of belonging.",
         "A modest sacrifice can lead to recognition.",
         "Overconfidence can turn a temporary advantage into severe loss."
-      ]
+      ],
+      "chinese": {
+        "meaning": "旅卦谈身处陌生环境时的分寸。目标宜适度，重视实际资源、当地规则与临时关系。",
+        "reflection": "轻装前行，保护基本需要，并尊重遇到的人。"
+      }
     },
     {
       "number": 57,
@@ -2163,7 +2392,11 @@
         "Patient work can yield several useful results.",
         "Prepare a correction, carry it out, and review what changed.",
         "Excessive yielding can cost the very tools needed to act."
-      ]
+      ],
+      "chinese": {
+        "meaning": "巽卦谈温和而持续的影响。反复说明、耐心接触和一致行动，常比强迫更能深入人心。",
+        "reflection": "把目的说清楚，再以稳定的小步骤落实。"
+      }
     },
     {
       "number": 58,
@@ -2179,7 +2412,11 @@
         "Distinguish wholesome enjoyment from a harmful attraction.",
         "Trust placed in a destructive influence is dangerous.",
         "Notice when pleasure draws you along without a clear choice."
-      ]
+      ],
+      "chinese": {
+        "meaning": "兑卦谈真诚交流与共同学习带来的喜悦。愉快应建立在诚信上，而不是讨好或操控。",
+        "reflection": "开展一次坦诚的交流，让双方都更清楚彼此。"
+      }
     },
     {
       "number": 59,
@@ -2195,7 +2432,11 @@
         "Release a narrow faction in service of a larger unity.",
         "Communicate clearly and allow needed resources to circulate.",
         "Distance yourself from a harmful or dangerous situation."
-      ]
+      ],
+      "chinese": {
+        "meaning": "涣卦谈化解分散、隔阂与僵化。共同意义和实际合作，能够帮助散开的力量重新找到方向。",
+        "reflection": "放下一项不必要的分隔，围绕具体目的重新连接。"
+      }
     },
     {
       "number": 60,
@@ -2211,7 +2452,11 @@
         "A limit that fits the situation can be accepted naturally.",
         "Beneficial, understandable limits earn willing support.",
         "Restrictions that become cruel or unbearable need reconsideration."
-      ]
+      ],
+      "chinese": {
+        "meaning": "节卦谈合宜的界限与节度。规则应使生活可持续；过度严苛、令人难以承受的限制需要调整。",
+        "reflection": "选择一项清楚、合理而有帮助的界限。"
+      }
     },
     {
       "number": 61,
@@ -2227,7 +2472,11 @@
         "Release a distracting attachment to serve a truer commitment.",
         "A bond grounded in trust can hold people together.",
         "A loud declaration without substance cannot sustain itself."
-      ]
+      ],
+      "chinese": {
+        "meaning": "中孚卦谈内心诚意与外在行动一致。信任来自可靠实践，而不只是好听的承诺。",
+        "reflection": "作出一个能够兑现的承诺，并用行动说明它。"
+      }
     },
     {
       "number": 62,
@@ -2243,7 +2492,11 @@
         "Meet what is near without forcing a distant advance.",
         "Work quietly on a limited task while larger conditions remain unready.",
         "Overshooting the proper landing turns a small excess into a serious mistake."
-      ]
+      ],
+      "chinese": {
+        "meaning": "小过卦谈谨慎处理小事。眼前更适合细致、谦抑的行动，不宜贸然扩大目标。",
+        "reflection": "把必要的小事做扎实，避免过度承担。"
+      }
     },
     {
       "number": 63,
@@ -2259,7 +2512,11 @@
         "Keep the materials ready to repair a developing leak.",
         "A sincere, modest offering can be better than a costly display.",
         "Overconfidence after crossing can lead you back into danger."
-      ]
+      ],
+      "chinese": {
+        "meaning": "既济卦谈事情初步完成后的维护。顺利完成不等于此后无忧，疏忽可能使秩序重新混乱。",
+        "reflection": "检查交接和维护，明确哪些事项仍需持续照顾。"
+      }
     },
     {
       "number": 64,
@@ -2275,7 +2532,11 @@
         "Sustained principled effort can eventually earn a durable result.",
         "Sincere, steady leadership brings light to an unfinished situation.",
         "Enjoy a pause without excess that would undo your judgment."
-      ]
+      ],
+      "chinese": {
+        "meaning": "未济卦谈尚未完成的渡越。接近成功时更须辨别准备是否充分，避免把将成当作已成。",
+        "reflection": "找出最后未完成的一步，确认条件，再稳妥完成。"
+      }
     }
   ]
 }

@@ -21,6 +21,8 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -135,6 +137,7 @@ private fun YiShuApp(model: YiShuViewModel = viewModel()) {
     }
     var tab by rememberSaveable { mutableIntStateOf(0) }
     var library by rememberSaveable { mutableStateOf(false) }
+    var languageMenu by rememberSaveable { mutableStateOf(false) }
     var selected by rememberSaveable { mutableIntStateOf(0) }
     var calculationFor by rememberSaveable { mutableStateOf<String?>(null) }
     val calculation = result != null && calculationFor == result?.id
@@ -172,9 +175,22 @@ private fun YiShuApp(model: YiShuViewModel = viewModel()) {
                                         Text(ui("易数通玄"), style = MaterialTheme.typography.titleMedium)
                                     }
                                 }
-                                if (!library) Row {
-                                    TextButton(onClick = { library = true }, enabled = corpus != null) { Text(ui("六十四卦")) }
-                                    TextButton(onClick = { VipActivity.open(context, preferences, result) }) { Text("VIP") }
+                                Row {
+                                    Box {
+                                        TextButton(onClick = { languageMenu = true }) { Text(if (preferences.english) "EN ▾" else if (preferences.traditional) "繁 ▾" else "简 ▾") }
+                                        DropdownMenu(expanded = languageMenu, onDismissRequest = { languageMenu = false }) {
+                                            listOf("English", "简体中文", "繁體中文").forEachIndexed { index, label ->
+                                                DropdownMenuItem(text = { Text(label) }, onClick = {
+                                                    model.updatePreferences { it.copy(english = index == 0, traditional = index == 2) }
+                                                    languageMenu = false
+                                                })
+                                            }
+                                        }
+                                    }
+                                    if (!library) {
+                                        TextButton(onClick = { library = true }, enabled = corpus != null) { Text(ui("六十四卦")) }
+                                        TextButton(onClick = { VipActivity.open(context, preferences, result) }) { Text("VIP") }
+                                    }
                                 }
                             }
                             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)

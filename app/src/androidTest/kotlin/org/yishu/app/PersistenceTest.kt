@@ -36,6 +36,8 @@ class PersistenceTest {
         assertEquals("坤为地", data.hexagrams.byBits(0).title)
         assertEquals("水火既济", data.hexagrams.byNumber(63).title)
         assertEquals("火水未济", data.hexagrams.byNumber(64).title)
+        assertTrue(data.classicText(data.hexagrams.byNumber(1).judgment, false).startsWith("乾："))
+        assertEquals("澤山咸", data.interfaceText("泽山咸", true))
         assertTrue(data.hexagrams.entries.all { it.source.startsWith("https://zh.wikisource.org/wiki/Special:PermanentLink/") })
         assertEquals(listOf(5, 16), data.dictionary.choices("龙", StrokeMode.MODERN).map { it.count })
         assertEquals(listOf("龙", "龍"), data.dictionary.choices("龙", StrokeMode.KANGXI).map { it.glyph })
