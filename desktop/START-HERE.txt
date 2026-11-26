@@ -1,0 +1,9 @@
+YiShu 1.3 · I Ching Companion for Windows
+
+Extract this entire ZIP to a folder, then open YiShu.exe.
+This portable x64 build uses the Microsoft Edge WebView2 Runtime and .NET Framework 4.6.2 or newer.
+
+The app opens its bundled pages in a native Windows window. The full app works offline once its Windows runtime is available.
+Saved readings and preferences use the Windows user profile. Open History to export records as JSON.
+
+This portable build has no Windows code-signing certificate.

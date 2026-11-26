@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore all 64 I Ching hexagrams with English explanations, traditional Chinese texts, coin readings, and a Chinese calendar. Use YiShu online or download the apps.">
+<meta name="theme-color" content="#173e35">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; connect-src 'self' https://yishu-workbench.shortbrine32.chatgpt.site/vip/redeem; object-src 'none'; base-uri 'self'; form-action 'none'">
+<title>YiShu · I Ching in English</title>
+<link rel="icon" href="assets/mark.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#workspace">Skip to main content</a>
+<aside class="sidebar">
+  <a class="brand" href="#plum" aria-label="YiShu home">
+    <img src="assets/mark.png" width="42" height="42" alt="">
+    <span><b id="brand-title">YiShu</b><small>I CHING COMPANION</small></span>
+  </a>
+  <nav id="navigation" aria-label="Main navigation"></nav>
+  <div id="sidebar-footer" class="sidebar-footer"></div>
+</aside>
+<main class="workspace" id="workspace">
+  <header class="topbar">
+    <div id="breadcrumb" class="breadcrumb">Plum Blossom Reading</div>
+    <a id="clock-link" class="clock-link" href="#hours"><span aria-hidden="true">◷</span><span id="clock-label">Traditional hours</span></a>
+  </header>
+  <div class="content" id="content"><p role="status">Loading English interpretations and character data…</p></div>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script type="module" src="app.js?v=1.3"></script>
+</body>
+</html>

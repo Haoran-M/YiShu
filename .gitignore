@@ -1,0 +1,16 @@
+.gradle/
+.kotlin/
+.idea/
+.data-cache/
+**/build/
+local.properties
+*.iml
+*.jks
+*.keystore
+*.log
+
+publication/
+dist/
+!sites/yishu/dist/
+!sites/yishu/dist/**
+*.tar.gz

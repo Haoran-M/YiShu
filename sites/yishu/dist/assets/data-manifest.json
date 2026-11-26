@@ -1,0 +1,19 @@
+{
+  "hexagrams": 64,
+  "lines": 384,
+  "modern": 102998,
+  "kangxiUnique": 63696,
+  "kangxiAmbiguous": 0,
+  "variants": 12972,
+  "checks": {
+    "hexagrams": "Cross-checked order, source trigram captions, all 64 bit patterns and all 384 line polarities",
+    "strokes": "Validated TSV/CSV structure, numeric values and code points against the pinned upstream data"
+  },
+  "hashes": {
+    "hexagrams.json": "40cba2b3d2ad7a3957a33c72e566e3adefcfa2f1d6b8572591a58e358393864a",
+    "strokes.tsv": "7e4f03744ec61df7a6abde671f2cf1236e443c3b91990b1cc6531d535754d7fc",
+    "STCharacters.txt": "ed1d268e0ad028511dcf5b0089faed0a980ad332449ec11d481ceefde6879f41",
+    "TSCharacters.txt": "6b5a0a799bea2bb22c001f635eaa3fc2904310f0c08addbff275477a80ecf09a",
+    "TSPhrases.txt": "504169029c43f7f234b8e2ae470720af3657675c5574ff8aa0feb257e1dc5ce2"
+  }
+}
