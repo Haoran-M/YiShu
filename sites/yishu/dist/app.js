@@ -1,8 +1,7 @@
 import {branches, calculatePlum, castCoins, categories, civilTime, coinLabels, coinResult,
   conversion, hourInterval, nextHour, resolveReading, strokeDictionary, traditionalHour, trigrams} from "./engine.js?v=1.3.2";
 import {verifyAccessCode} from "./vip-access.js";
-import {english,englishText} from "./english.js?v=1.3.2";
-import {trackPage} from "./tracking.js";
+import {english,englishText} from "./english.js?v=1.3.2-private";
 
 const $ = selector => document.querySelector(selector);
 const content = $("#content");
@@ -99,14 +98,13 @@ function route() {
   state.page = androidVip ? "vip" : Object.hasOwn(pages, id) ? id : "plum";
   if (state.page !== "coins") state.shake = false;
   render();
-  trackPage(state.page);
   window.scrollTo(0,0);
 }
 function render() {
   applyAppearance();
   $("#breadcrumb").innerHTML = `<span>${tx("易学工具")}</span><span class="slash" aria-hidden="true">/</span><span>${tx(pages[state.page][0])}</span>`;
   $("#navigation").innerHTML = ["plum","coins","hours","library","vip","history","settings"].map(navItem).join("");
-  $("#sidebar-footer").innerHTML = `<a href="downloads.html">${tx("下载应用和源码")}</a><span class="muted">${tx("卦例仅保存在此设备")}</span><a href="privacy.html">${tx("隐私与访问统计")}</a>`;
+  $("#sidebar-footer").innerHTML = `<a href="downloads.html">${tx("下载应用和源码")}</a><span class="muted">${tx("卦例仅保存在此设备")}</span><a href="privacy.html">${settings.script==="english"?"Privacy":tx("隐私")}</a>`;
   if (!corpus) return;
   vipGeneration++;
   vipTick = null;

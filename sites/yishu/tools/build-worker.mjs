@@ -9,7 +9,7 @@ const mimes={".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8"
   ".png":"image/png",".jpg":"image/jpeg"};
 async function collect(dir) {
   for (const file of await readdir(dir,{withFileTypes:true})) {
-    if (dir===dist && file.name==="server") continue;
+    if (dir===dist && ["server","analytics.html","analytics.js"].includes(file.name)) continue;
     const path=join(dir,file.name);
     if (file.isDirectory()) { await collect(path); continue; }
     const type=mimes[extname(file.name)];

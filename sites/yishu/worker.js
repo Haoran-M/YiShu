@@ -59,7 +59,6 @@ async function exchangeSharedCode(code, env) {
   return token ? {codeGrant, token} : {error:"unavailable", status:503};
 }
 
-const trackedPages = new Set(["plum","coins","hours","library","vip","history","settings","downloads","privacy"]);
 async function traffic(request,env,url) {
   if (url.pathname==="/api/analytics") {
     if(request.method!=="GET") return sendJson({error:"method"},405,{Allow:"GET"});
@@ -83,18 +82,7 @@ async function traffic(request,env,url) {
     return sendJson({views:days.reduce((n,row)=>n+row.views,0),sessions:[...sessions.values()].reduce((a,b)=>a+b,0),today:sessions.get(today)??0,days,pages:results[2].results});
   }
   if(request.method!=="POST") return sendJson({error:"method"},405,{Allow:"POST"});
-  if(!allowMutation(request,url)) return sendJson({error:"origin"},403);
-  if(request.headers.get("DNT")==="1"||request.headers.get("Sec-GPC")==="1") return new Response(null,{status:204});
-  if(!env.DB) return sendJson({error:"unavailable"},503);
-  let input;try{input=JSON.parse(await readCode(request));}catch{return sendJson({error:"invalid"},400);}
-  if(!trackedPages.has(input?.page)||!/^[-a-f0-9]{36}$/.test(input?.session??"")) return sendJson({error:"invalid"},400);
-  const day=new Date().toISOString().slice(0,10);
-  const cutoff=new Date(Date.now()-29*86400000).toISOString().slice(0,10);
-  await env.DB.batch([
-    env.DB.prepare("INSERT OR IGNORE INTO visit_sessions(day,session_id,first_seen) VALUES(?,?,?)").bind(day,input.session,new Date().toISOString()),
-    env.DB.prepare("INSERT INTO visit_pages(day,page,views) VALUES(?,?,1) ON CONFLICT(day,page) DO UPDATE SET views=views+1").bind(day,input.page),
-    env.DB.prepare("DELETE FROM visit_sessions WHERE day < ?").bind(cutoff),
-  ]);
+  // Discard legacy visit requests without reading input or writing to storage.
   return new Response(null,{status:204,headers:{"Cache-Control":"no-store"}});
 }
 
@@ -102,6 +90,7 @@ export default {
   async fetch(request, env = {}) {
     const url=new URL(request.url);
     let path=url.pathname;
+    if(path==="/analytics.html"||path==="/analytics.js") return sendJson({error:"not_found"},404);
     if(path==="/api/visits"||path==="/api/analytics") {
       try{return await traffic(request,env,url);}catch{return sendJson({error:"unavailable"},503);}
     }

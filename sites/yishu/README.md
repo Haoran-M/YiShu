@@ -6,7 +6,7 @@ This English-first website includes Plum Blossom readings, three-coin readings, 
 
 Edit English content in the repository root's `tools/english-gua.txt` and `tools/english-ui.txt`, then run `node tools/build-english.mjs`. English is the default; Chinese interfaces remain in Settings. The original English explanations and the attributed Chinese corpus are available under CC BY-SA 4.0.
 
-The private traffic dashboard is `/analytics.html`. Sites D1 binding `DB` persists anonymous page counts and 30-day sessions. `YISHU_ANALYTICS_KEY` is a separate publisher secret, required in the Authorization header for reports. The publisher's local copy is `%LOCALAPPDATA%\YiShuPublisher\analytics-key.txt`. Never commit it. See `/privacy.html` for collection details and browser opt-out. Questions and personal reading inputs are excluded. Installed apps send no analytics.
+Visit collection is disabled. Public pages contain no tracking links or controls, and the dashboard files are excluded from the deployment. Previously collected counts remain protected by the publisher key at the report API; no new visits are stored.
 
 ## Development
 

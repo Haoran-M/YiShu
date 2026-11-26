@@ -33,24 +33,27 @@ function database(){
   return {raw:db,prepare(sql){let params=[];return {bind(...values){params=values;return this;},sql,values:()=>params};},async batch(statements){return statements.map(({sql,values})=>({results:db.prepare(sql).all(...values())}));}};
 }
 const origin='https://example.org';
-test('traffic persists, deduplicates daily sessions, protects reports, validates input and honors privacy',async()=>{
+test('visit collection is disabled and dashboard assets are not public',async()=>{
+  const DB={prepare(){throw new Error('Collection must not access storage');},batch(){throw new Error('Collection must not access storage');}};
+  const response=await worker.fetch(new Request(origin+'/api/visits',{method:'POST',body:JSON.stringify({page:'library',session:'12345678-1234-4234-8234-123456789abc'})}),{DB});
+  assert.equal(response.status,204);
+  for(const path of ['/analytics.html','/analytics.js']) assert.equal((await worker.fetch(new Request(origin+path))).status,404);
+  const app=await (await worker.fetch(new Request(origin+'/app.js'))).text();
+  assert.equal(app.includes('trackPage('),false);
+  const privacy=await (await worker.fetch(new Request(origin+'/privacy.html'))).text();
+  assert.equal(privacy.includes('id="toggle"'),false);
+});
+
+test('historical counts still require the private publisher key',async()=>{
   const DB=database();DB.raw.exec(await readFile(new URL('../drizzle/0000_visit_counts.sql',import.meta.url),'utf8'));
+  const day=new Date().toISOString().slice(0,10);
+  DB.raw.prepare('INSERT INTO visit_pages(day,page,views) VALUES(?,?,?)').run(day,'library',3);
+  DB.raw.prepare('INSERT INTO visit_sessions(day,session_id,first_seen) VALUES(?,?,?)').run(day,'private-session',new Date().toISOString());
   const env={DB,YISHU_ANALYTICS_KEY:'publisher-test-key'};
-  const session='12345678-1234-4234-8234-123456789abc';
-  const post=(data,headers={})=>worker.fetch(new Request(origin+'/api/visits',{method:'POST',headers:{'Content-Type':'application/json',Origin:origin,...headers},body:JSON.stringify(data)}),env);
-  assert.equal((await post({page:'library',session})).status,204);
-  assert.equal((await post({page:'plum',session})).status,204);
-  assert.equal((await post({page:'library',session:'22345678-1234-4234-8234-123456789abc'})).status,204);
-  assert.equal((await post({page:'library',session},{DNT:'1'})).status,204);
-  assert.equal((await post({page:'library',session},{'Sec-GPC':'1'})).status,204);
-  assert.equal((await post({page:'private question',session})).status,400);
-  assert.equal((await post({page:'library',session:'invalid'})).status,400);
-  assert.equal((await post({page:'library',session},{Origin:'https://attacker.example'})).status,403);
   assert.equal((await worker.fetch(new Request(origin+'/api/analytics'),env)).status,401);
-  assert.equal((await worker.fetch(new Request(origin+'/api/analytics',{headers:{Authorization:'Bearer wrong'}}),env)).status,401);
   const response=await worker.fetch(new Request(origin+'/api/analytics',{headers:{Authorization:'Bearer publisher-test-key'}}),env);
-  assert.equal(response.status,200);assert.equal(response.headers.get('Cache-Control'),'no-store');
-  const counts=await response.json();assert.equal(counts.views,3);assert.equal(counts.sessions,2);assert.equal(counts.today,2);assert.equal(counts.pages[0].views,2);
-  assert.equal(JSON.stringify(counts).includes(session),false);
+  assert.equal(response.status,200);
+  const counts=await response.json();assert.equal(counts.views,3);assert.equal(counts.sessions,1);
+  assert.equal(JSON.stringify(counts).includes('private-session'),false);
   DB.raw.close();
 });

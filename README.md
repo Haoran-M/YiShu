@@ -2,11 +2,11 @@
 
 An English-first I Ching companion for the web, Android, and Windows, with all 64 gua explained in plain English alongside the traditional Chinese classics. It includes Plum Blossom number readings, three-coin readings, the twelve traditional hours, and an offline classical library. It stores saved readings and preferences on the device. The app uses Kotlin, Jetpack Compose, Room and DataStore, with the calculation engine in a separate pure Kotlin module.
 
-[Use the website](https://yishu-workbench.shortbrine32.chatgpt.site/) · [Download Android and Windows](https://github.com/Haoran-M/YiShu/releases/latest) · [English edition and private analytics](docs/ENGLISH_RELEASE_1.3.md)
+[Use the website](https://yishu-workbench.shortbrine32.chatgpt.site/) · [Download Android and Windows](https://github.com/Haoran-M/YiShu/releases/latest) · [English edition](docs/ENGLISH_RELEASE_1.3.md)
 
 ## Website and desktop
 
-YiShu has a public browser edition and a portable Windows x64 app. All three editions include VIP access to the calendar and solar terms, birth lookup, derived hexagrams, and name and relationship readings. Version 1.3 adds English descriptions, line-by-line paraphrases, English and pinyin search, app downloads, and a private website visit dashboard. The installed apps need a connection for the first passphrase activation and then run offline until the saved pass expires. The desktop ZIP includes its site files and opens in a native window using the installed Microsoft Edge WebView2 Runtime.
+YiShu has a public browser edition and a portable Windows x64 app. All three editions include VIP access to the calendar and solar terms, birth lookup, derived hexagrams, and name and relationship readings. Version 1.3 adds English descriptions, line-by-line paraphrases, English and pinyin search, and app downloads. The installed apps need a connection for the first passphrase activation and then run offline until the saved pass expires. The desktop ZIP includes its site files and opens in a native window using the installed Microsoft Edge WebView2 Runtime.
 
 - Website source, calendar data decisions, and publisher code issuance are in [the website README](sites/yishu/README.md).
 - Build the Windows ZIP from the root with `./desktop/build.ps1`. Extract the entire `dist/YiShu-1.3.2-Windows-x64.zip` folder and open `YiShu.exe`.
