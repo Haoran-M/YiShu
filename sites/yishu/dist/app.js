@@ -1,7 +1,7 @@
 import {branches, calculatePlum, castCoins, categories, civilTime, coinLabels, coinResult,
   conversion, hourInterval, nextHour, resolveReading, strokeDictionary, traditionalHour, trigrams} from "./engine.js";
 import {verifyAccessCode} from "./vip-access.js";
-import {english,englishText} from "./english.js";
+import {english,englishText} from "./english.js?v=1.3.1";
 import {trackPage} from "./tracking.js";
 
 const $ = selector => document.querySelector(selector);

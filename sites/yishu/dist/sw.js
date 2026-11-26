@@ -1,5 +1,5 @@
 const cacheName = "yishu-workbench-1.3.1";
-const paths = ["./index.html","./style.css","./app.js?v=1.3.1","./engine.js","./english.js","./tracking.js","./assets/english.json","./assets/mark.png","./assets/landscape.jpg",
+const paths = ["./index.html","./style.css?v=1.3.1","./app.js?v=1.3.1","./engine.js","./english.js?v=1.3.1","./tracking.js","./assets/english.json","./assets/mark.png","./assets/landscape.jpg",
   "./assets/hexagrams.json","./assets/strokes.tsv","./assets/STCharacters.txt","./assets/TSCharacters.txt",
   "./assets/TSPhrases.txt","./assets/cc-by-sa-4.0.txt","./assets/opencc-license.txt","./assets/unicode-license.txt",
   "./assets/kangxi-license.txt","./assets/data-manifest.json","./vip-access.js","./vip-public.js"];
